@@ -19,18 +19,58 @@ namespace CarRentalApp
 
         private void Submit_Click(object sender, EventArgs e)
         {
-            string customerName = tbCustomerName.Text;
-            string dateOut = dtpDateRented.Value.ToString();   
-            string dateIn = dtpDateReturned.Value.ToString();
-            double cost = Convert.ToDouble(tbCost.Text);
+            try
+            {
+                string customerName = tbCustomerName.Text;
+                var dateOut = dtpDateRented.Value;
+                var dateIn = dtpDateReturned.Value;
 
-            var carType = cbTypeOfCar.SelectedItem.ToString();
+                double cost = Convert.ToDouble(tbCost.Text);
+                var carType = cbTypeOfCar.Text;
 
-            MessageBox.Show($"Customer Name: {customerName}\n\r" +
-                $"Date Rented: {dateOut}\n\r" +
-                $"Date Returned: {dateIn}\n\r" +
-                $"Car Type: {carType}\n\r" +
-                $"THANK YOU FOR YOUR BUSINESS");
+
+                var isValid = true;
+                var errorMessage = "";
+
+
+                if (string.IsNullOrWhiteSpace(customerName) || string.IsNullOrWhiteSpace(carType))
+                {
+                    errorMessage += "Error: Please enter missing data. \n \r";
+                    isValid = false;
+                }
+
+                if (dateOut >= dateIn)
+                {
+                    errorMessage += "Error: Illegal Date Selection \n\r";
+                    isValid = false;
+                }
+
+
+                if (isValid)
+                {
+                    MessageBox.Show($"Customer Name: {customerName}\n\r" +
+                    $"Date Rented: {dateOut}\n\r" +
+                    $"Date Returned: {dateIn}\n\r" +
+                    $"Cost: {cost}\n\r" +
+                    $"Car Type: {carType}\n\r" +
+                    $"THANK YOU FOR YOUR BUSINESS");
+                }
+                else
+                {
+                    MessageBox.Show(errorMessage);
+                }
+                    
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                //throw;
+            }
+
+
+
+            
+            
         }
     }
 }
