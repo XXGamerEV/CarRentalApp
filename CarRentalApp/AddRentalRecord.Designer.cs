@@ -1,6 +1,6 @@
 ﻿namespace CarRentalApp
 {
-    partial class Form1
+    partial class AddRentalRecord
     {
         /// <summary>
         /// Required designer variable.
@@ -40,6 +40,7 @@
             this.Submit = new System.Windows.Forms.Button();
             this.tbCost = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.LaunchMainWindow = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -107,11 +108,6 @@
             // 
             this.cbTypeOfCar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTypeOfCar.FormattingEnabled = true;
-            this.cbTypeOfCar.Items.AddRange(new object[] {
-            "Honda",
-            "Toyota",
-            "Lada",
-            "Buggy"});
             this.cbTypeOfCar.Location = new System.Drawing.Point(12, 248);
             this.cbTypeOfCar.Name = "cbTypeOfCar";
             this.cbTypeOfCar.Size = new System.Drawing.Size(201, 21);
@@ -154,11 +150,22 @@
             this.label6.TabIndex = 11;
             this.label6.Text = "Cost";
             // 
+            // LaunchMainWindow
+            // 
+            this.LaunchMainWindow.Location = new System.Drawing.Point(45, 275);
+            this.LaunchMainWindow.Name = "LaunchMainWindow";
+            this.LaunchMainWindow.Size = new System.Drawing.Size(124, 35);
+            this.LaunchMainWindow.TabIndex = 12;
+            this.LaunchMainWindow.Text = "Launch Main Window";
+            this.LaunchMainWindow.UseVisualStyleBackColor = true;
+            this.LaunchMainWindow.Click += new System.EventHandler(this.LaunchMainWindow_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(524, 322);
+            this.Controls.Add(this.LaunchMainWindow);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.tbCost);
             this.Controls.Add(this.Submit);
@@ -173,6 +180,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -192,6 +200,7 @@
         private System.Windows.Forms.Button Submit;
         private System.Windows.Forms.TextBox tbCost;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button LaunchMainWindow;
     }
 }
 
