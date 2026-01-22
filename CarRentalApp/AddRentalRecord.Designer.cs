@@ -40,18 +40,17 @@
             this.Submit = new System.Windows.Forms.Button();
             this.tbCost = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.LaunchMainWindow = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(168, 9);
+            this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(259, 31);
+            this.label1.Size = new System.Drawing.Size(260, 31);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Car Rental System";
+            this.label1.Text = "Add Rental Record";
             // 
             // tbCustomerName
             // 
@@ -150,22 +149,11 @@
             this.label6.TabIndex = 11;
             this.label6.Text = "Cost";
             // 
-            // LaunchMainWindow
-            // 
-            this.LaunchMainWindow.Location = new System.Drawing.Point(45, 275);
-            this.LaunchMainWindow.Name = "LaunchMainWindow";
-            this.LaunchMainWindow.Size = new System.Drawing.Size(124, 35);
-            this.LaunchMainWindow.TabIndex = 12;
-            this.LaunchMainWindow.Text = "Launch Main Window";
-            this.LaunchMainWindow.UseVisualStyleBackColor = true;
-            this.LaunchMainWindow.Click += new System.EventHandler(this.LaunchMainWindow_Click);
-            // 
-            // Form1
+            // AddRentalRecord
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(524, 322);
-            this.Controls.Add(this.LaunchMainWindow);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.tbCost);
             this.Controls.Add(this.Submit);
@@ -178,8 +166,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tbCustomerName);
             this.Controls.Add(this.label1);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "AddRentalRecord";
+            this.Text = "Add Rental Record";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -200,7 +188,6 @@
         private System.Windows.Forms.Button Submit;
         private System.Windows.Forms.TextBox tbCost;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button LaunchMainWindow;
     }
 }
 

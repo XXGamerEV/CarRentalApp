@@ -16,5 +16,12 @@ namespace CarRentalApp
         {
             InitializeComponent();
         }
+
+        private void addRentalRecordsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var addRentalRecordWindow = new AddRentalRecord();
+            addRentalRecordWindow.MdiParent = this;
+            addRentalRecordWindow.Show();
+        }
     }
 }
