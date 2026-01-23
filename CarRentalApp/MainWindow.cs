@@ -19,9 +19,38 @@ namespace CarRentalApp
 
         private void addRentalRecordsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var addRentalRecordWindow = new AddRentalRecord();
-            addRentalRecordWindow.MdiParent = this;
-            addRentalRecordWindow.Show();
+            var OpenForms = Application.OpenForms.Cast<Form>();
+            var isOpen = OpenForms.Any(q => q.Name == "AddEditRentalRecord");
+            if (!isOpen)
+            {
+                var addRentalRecordWindow = new AddEditRentalRecord();
+                addRentalRecordWindow.ShowDialog();
+                addRentalRecordWindow.MdiParent = this;
+            }
+        }
+
+        private void manageVehicleListingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var OpenForms = Application.OpenForms.Cast<Form>();
+            var isOpen = OpenForms.Any(q => q.Name == "ManageVehicleListing");
+            if(!isOpen)
+            {
+                var vehicleListingWindow = new ManageVehicleListing();
+                vehicleListingWindow.MdiParent = this;
+                vehicleListingWindow.Show();
+            }
+        }
+
+        private void viewArchiveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var OpenForms = Application.OpenForms.Cast<Form>();
+            var isOpen = OpenForms.Any(q => q.Name == "ManageRentalRecords");
+            if (!isOpen)
+            {
+                var manageRentalRecordsWindow = new ManageRentalRecords();
+                manageRentalRecordsWindow.MdiParent = this;
+                manageRentalRecordsWindow.Show();
+            }
         }
     }
 }

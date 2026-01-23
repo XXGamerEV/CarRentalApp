@@ -30,10 +30,6 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.manageVehicleListingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addVehicleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.remToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editVehiclesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.viewListingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageRentalRecordsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addRentalRecordsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewArchiveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,44 +44,16 @@
             this.manageRentalRecordsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1492, 24);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // manageVehicleListingToolStripMenuItem
             // 
-            this.manageVehicleListingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addVehicleToolStripMenuItem,
-            this.remToolStripMenuItem,
-            this.editVehiclesToolStripMenuItem,
-            this.viewListingToolStripMenuItem});
             this.manageVehicleListingToolStripMenuItem.Name = "manageVehicleListingToolStripMenuItem";
             this.manageVehicleListingToolStripMenuItem.Size = new System.Drawing.Size(140, 20);
             this.manageVehicleListingToolStripMenuItem.Text = "Manage Vehicle Listing";
-            // 
-            // addVehicleToolStripMenuItem
-            // 
-            this.addVehicleToolStripMenuItem.Name = "addVehicleToolStripMenuItem";
-            this.addVehicleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.addVehicleToolStripMenuItem.Text = "Add Vehicle";
-            // 
-            // remToolStripMenuItem
-            // 
-            this.remToolStripMenuItem.Name = "remToolStripMenuItem";
-            this.remToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.remToolStripMenuItem.Text = "Remove Vehicle";
-            // 
-            // editVehiclesToolStripMenuItem
-            // 
-            this.editVehiclesToolStripMenuItem.Name = "editVehiclesToolStripMenuItem";
-            this.editVehiclesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.editVehiclesToolStripMenuItem.Text = "Edit Vehicles";
-            // 
-            // viewListingToolStripMenuItem
-            // 
-            this.viewListingToolStripMenuItem.Name = "viewListingToolStripMenuItem";
-            this.viewListingToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.viewListingToolStripMenuItem.Text = "View Listing";
+            this.manageVehicleListingToolStripMenuItem.Click += new System.EventHandler(this.manageVehicleListingToolStripMenuItem_Click);
             // 
             // manageRentalRecordsToolStripMenuItem
             // 
@@ -100,7 +68,7 @@
             // addRentalRecordsToolStripMenuItem
             // 
             this.addRentalRecordsToolStripMenuItem.Name = "addRentalRecordsToolStripMenuItem";
-            this.addRentalRecordsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addRentalRecordsToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.addRentalRecordsToolStripMenuItem.Text = "Add Rental Records";
             this.addRentalRecordsToolStripMenuItem.Click += new System.EventHandler(this.addRentalRecordsToolStripMenuItem_Click);
             // 
@@ -109,18 +77,19 @@
             this.viewArchiveToolStripMenuItem.Name = "viewArchiveToolStripMenuItem";
             this.viewArchiveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.viewArchiveToolStripMenuItem.Text = "View Archive";
+            this.viewArchiveToolStripMenuItem.Click += new System.EventHandler(this.viewArchiveToolStripMenuItem_Click);
             // 
             // editRentalRecordToolStripMenuItem
             // 
             this.editRentalRecordToolStripMenuItem.Name = "editRentalRecordToolStripMenuItem";
-            this.editRentalRecordToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editRentalRecordToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.editRentalRecordToolStripMenuItem.Text = "Edit Rental Record";
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1492, 585);
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
             this.Name = "MainWindow";
@@ -136,10 +105,6 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem manageVehicleListingToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem addVehicleToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem remToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem editVehiclesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem viewListingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem manageRentalRecordsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addRentalRecordsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewArchiveToolStripMenuItem;
