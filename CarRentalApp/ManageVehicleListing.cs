@@ -50,9 +50,12 @@ namespace CarRentalApp
 
         private void btnAddNewCar_Click(object sender, EventArgs e)
         {
-            var addVehicleWindow = new AddEditVehicle(this);
-            addVehicleWindow.MdiParent = this.MdiParent;
-            addVehicleWindow.Show();
+            if (!Utils.FromIsOpen("AddEditVehicle"))
+            {
+                var addVehicleWindow = new AddEditVehicle(this);
+                addVehicleWindow.MdiParent = this.MdiParent;
+                addVehicleWindow.Show();
+            }
         }
 
         private void btnEditCar_Click(object sender, EventArgs e)
@@ -61,9 +64,13 @@ namespace CarRentalApp
             {
                 var id = (int)gvVehicleList.SelectedRows[0].Cells["Id"].Value;
                 var car = _db.TypesOfCars.FirstOrDefault(q => q.Id == id);
-                var editVehicleWindow = new AddEditVehicle(car,this);
-                editVehicleWindow.MdiParent = this.MdiParent;
-                editVehicleWindow.Show();
+                if (!Utils.FromIsOpen("AddEditVehicle"))
+                {
+                    var editVehicleWindow = new AddEditVehicle(car, this);
+                    editVehicleWindow.MdiParent = this.MdiParent;
+                    editVehicleWindow.Show();
+                }
+                
             }
             catch (Exception ex)
             {

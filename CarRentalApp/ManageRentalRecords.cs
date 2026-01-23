@@ -26,11 +26,13 @@ namespace CarRentalApp
 
         private void btnAddRercord_Click(object sender, EventArgs e)
         {
-            var addRercordWindow = new AddEditRentalRecord(this)
+
+            if (!Utils.FromIsOpen("AddEditRentalRecord"))
             {
-                MdiParent = this.MdiParent
-            };
-            addRercordWindow.Show();
+                var addRercordWindow = new AddEditRentalRecord();
+                MdiParent = this.MdiParent;
+                addRercordWindow.Show();
+            }
         }
 
         private void btnEditRecord_Click(object sender, EventArgs e)
@@ -40,10 +42,12 @@ namespace CarRentalApp
                 var id = (int)gvRecordList.SelectedRows[0].Cells["Id"].Value;
                 var record = _db.CarRentalRecords.FirstOrDefault(q => q.id == id);
 
-
-                var editRecordWindow = new AddEditRentalRecord(record,this);
-                editRecordWindow.MdiParent = this.MdiParent;
-                editRecordWindow.Show();
+                if (!Utils.FromIsOpen("AddEditRentalRecord"))
+                {
+                    var editRecordWindow = new AddEditRentalRecord(record, this);
+                    editRecordWindow.MdiParent = this.MdiParent;
+                    editRecordWindow.Show();
+                }
             }
             catch (Exception ex)
             {
