@@ -36,6 +36,7 @@
             this.manageUsersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stiLoginTxt = new System.Windows.Forms.StatusStrip();
             this.tsiLoginTxt = new System.Windows.Forms.ToolStripStatusLabel();
+            this.manageCustomersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.stiLoginTxt.SuspendLayout();
             this.SuspendLayout();
@@ -45,7 +46,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.manageVehicleListingToolStripMenuItem,
             this.manageRentalRecordsToolStripMenuItem,
-            this.manageUsersToolStripMenuItem});
+            this.manageUsersToolStripMenuItem,
+            this.manageCustomersToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1492, 24);
@@ -104,6 +106,13 @@
             this.tsiLoginTxt.Name = "tsiLoginTxt";
             this.tsiLoginTxt.Size = new System.Drawing.Size(0, 17);
             // 
+            // manageCustomersToolStripMenuItem
+            // 
+            this.manageCustomersToolStripMenuItem.Name = "manageCustomersToolStripMenuItem";
+            this.manageCustomersToolStripMenuItem.Size = new System.Drawing.Size(122, 20);
+            this.manageCustomersToolStripMenuItem.Text = "Manage Customers";
+            this.manageCustomersToolStripMenuItem.Click += new System.EventHandler(this.manageCustomersToolStripMenuItem_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -135,5 +144,6 @@
         private System.Windows.Forms.ToolStripMenuItem manageUsersToolStripMenuItem;
         private System.Windows.Forms.StatusStrip stiLoginTxt;
         private System.Windows.Forms.ToolStripStatusLabel tsiLoginTxt;
+        private System.Windows.Forms.ToolStripMenuItem manageCustomersToolStripMenuItem;
     }
 }

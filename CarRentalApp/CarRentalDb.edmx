@@ -16,6 +16,15 @@
           <Property Name="Cost" Type="decimal" Precision="18" Scale="0" />
           <Property Name="TypeOFCarId" Type="int" />
         </EntityType>
+        <EntityType Name="CustomerInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Customer" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Bank" Type="varchar" MaxLength="50" />
+          <Property Name="CarId" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Roles">
           <Key>
             <PropertyRef Name="id" />
@@ -64,6 +73,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_CustomerInfo_CustomerInfo">
+          <End Role="TypesOfCars" Type="Self.TypesOfCars" Multiplicity="1" />
+          <End Role="CustomerInfo" Type="Self.CustomerInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypesOfCars">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CustomerInfo">
+              <PropertyRef Name="CarId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerInfo_CustomerInfo1">
+          <End Role="CustomerInfo" Type="Self.CustomerInfo" Multiplicity="1" />
+          <End Role="CustomerInfo1" Type="Self.CustomerInfo" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CustomerInfo1">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_UserRoles_Roles">
           <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
           <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="*" />
@@ -90,6 +123,7 @@
         </Association>
         <EntityContainer Name="CarRentalModelStoreContainer">
           <EntitySet Name="CarRentalRecord" EntityType="Self.CarRentalRecord" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerInfo" EntityType="Self.CustomerInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TypesOfCars" EntityType="Self.TypesOfCars" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserRoles" EntityType="Self.UserRoles" Schema="dbo" store:Type="Tables" />
@@ -97,6 +131,14 @@
           <AssociationSet Name="FK_CarRentalRecord_TypesOfCars" Association="Self.FK_CarRentalRecord_TypesOfCars">
             <End Role="TypesOfCars" EntitySet="TypesOfCars" />
             <End Role="CarRentalRecord" EntitySet="CarRentalRecord" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerInfo_CustomerInfo" Association="Self.FK_CustomerInfo_CustomerInfo">
+            <End Role="TypesOfCars" EntitySet="TypesOfCars" />
+            <End Role="CustomerInfo" EntitySet="CustomerInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerInfo_CustomerInfo1" Association="Self.FK_CustomerInfo_CustomerInfo1">
+            <End Role="CustomerInfo" EntitySet="CustomerInfo" />
+            <End Role="CustomerInfo1" EntitySet="CustomerInfo" />
           </AssociationSet>
           <AssociationSet Name="FK_UserRoles_Roles" Association="Self.FK_UserRoles_Roles">
             <End Role="Roles" EntitySet="Roles" />
@@ -113,14 +155,14 @@
       <Schema Namespace="CarRentalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="CarRentalEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CarRentalRecords" EntityType="CarRentalModel.CarRentalRecord" />
+          <EntitySet Name="Roles" EntityType="CarRentalModel.Role" />
           <EntitySet Name="TypesOfCars" EntityType="CarRentalModel.TypesOfCar" />
+          <EntitySet Name="UserRoles" EntityType="CarRentalModel.UserRole" />
+          <EntitySet Name="Users" EntityType="CarRentalModel.User" />
           <AssociationSet Name="FK_CarRentalRecord_TypesOfCars" Association="CarRentalModel.FK_CarRentalRecord_TypesOfCars">
             <End Role="TypesOfCar" EntitySet="TypesOfCars" />
             <End Role="CarRentalRecord" EntitySet="CarRentalRecords" />
           </AssociationSet>
-          <EntitySet Name="Roles" EntityType="CarRentalModel.Role" />
-          <EntitySet Name="UserRoles" EntityType="CarRentalModel.UserRole" />
-          <EntitySet Name="Users" EntityType="CarRentalModel.User" />
           <AssociationSet Name="FK_UserRoles_Roles" Association="CarRentalModel.FK_UserRoles_Roles">
             <End Role="Role" EntitySet="Roles" />
             <End Role="UserRole" EntitySet="UserRoles" />
@@ -128,6 +170,15 @@
           <AssociationSet Name="FK_UserRoles_Users" Association="CarRentalModel.FK_UserRoles_Users">
             <End Role="User" EntitySet="Users" />
             <End Role="UserRole" EntitySet="UserRoles" />
+          </AssociationSet>
+          <EntitySet Name="CustomerInfoes" EntityType="CarRentalModel.CustomerInfo" />
+          <AssociationSet Name="FK_CustomerInfo_CustomerInfo" Association="CarRentalModel.FK_CustomerInfo_CustomerInfo">
+            <End Role="TypesOfCar" EntitySet="TypesOfCars" />
+            <End Role="CustomerInfo" EntitySet="CustomerInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerInfo_CustomerInfo1" Association="CarRentalModel.FK_CustomerInfo_CustomerInfo1">
+            <End Role="CustomerInfo" EntitySet="CustomerInfoes" />
+            <End Role="CustomerInfo1" EntitySet="CustomerInfoes" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="CarRentalRecord">
@@ -142,6 +193,15 @@
           <Property Name="TypeOFCarId" Type="Int32" />
           <NavigationProperty Name="TypesOfCar" Relationship="CarRentalModel.FK_CarRentalRecord_TypesOfCars" FromRole="CarRentalRecord" ToRole="TypesOfCar" />
         </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="shortname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="UserRoles" Relationship="CarRentalModel.FK_UserRoles_Roles" FromRole="Role" ToRole="UserRole" />
+        </EntityType>
         <EntityType Name="TypesOfCar">
           <Key>
             <PropertyRef Name="Id" />
@@ -153,27 +213,7 @@
           <Property Name="LicensePlateNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Year" Type="Int32" />
           <NavigationProperty Name="CarRentalRecords" Relationship="CarRentalModel.FK_CarRentalRecord_TypesOfCars" FromRole="TypesOfCar" ToRole="CarRentalRecord" />
-        </EntityType>
-        <Association Name="FK_CarRentalRecord_TypesOfCars">
-          <End Type="CarRentalModel.TypesOfCar" Role="TypesOfCar" Multiplicity="0..1" />
-          <End Type="CarRentalModel.CarRentalRecord" Role="CarRentalRecord" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TypesOfCar">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="CarRentalRecord">
-              <PropertyRef Name="TypeOFCarId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="Role">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="shortname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="UserRoles" Relationship="CarRentalModel.FK_UserRoles_Roles" FromRole="Role" ToRole="UserRole" />
+          <NavigationProperty Name="CustomerInfoes" Relationship="CarRentalModel.FK_CustomerInfo_CustomerInfo" FromRole="TypesOfCar" ToRole="CustomerInfo" />
         </EntityType>
         <EntityType Name="UserRole">
           <Key>
@@ -195,6 +235,18 @@
           <Property Name="isActive" Type="Boolean" />
           <NavigationProperty Name="UserRoles" Relationship="CarRentalModel.FK_UserRoles_Users" FromRole="User" ToRole="UserRole" />
         </EntityType>
+        <Association Name="FK_CarRentalRecord_TypesOfCars">
+          <End Type="CarRentalModel.TypesOfCar" Role="TypesOfCar" Multiplicity="0..1" />
+          <End Type="CarRentalModel.CarRentalRecord" Role="CarRentalRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypesOfCar">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CarRentalRecord">
+              <PropertyRef Name="TypeOFCarId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_UserRoles_Roles">
           <End Type="CarRentalModel.Role" Role="Role" Multiplicity="0..1" />
           <End Type="CarRentalModel.UserRole" Role="UserRole" Multiplicity="*" />
@@ -219,7 +271,43 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <EntityType Name="CustomerInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Customer" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Bank" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CarId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TypesOfCar" Relationship="CarRentalModel.FK_CustomerInfo_CustomerInfo" FromRole="CustomerInfo" ToRole="TypesOfCar" />
+          <NavigationProperty Name="CustomerInfo1" Relationship="CarRentalModel.FK_CustomerInfo_CustomerInfo1" FromRole="CustomerInfo" ToRole="CustomerInfo1" />
+          <NavigationProperty Name="CustomerInfo2" Relationship="CarRentalModel.FK_CustomerInfo_CustomerInfo1" FromRole="CustomerInfo1" ToRole="CustomerInfo" />
+        </EntityType>
+        <Association Name="FK_CustomerInfo_CustomerInfo">
+          <End Type="CarRentalModel.TypesOfCar" Role="TypesOfCar" Multiplicity="1" />
+          <End Type="CarRentalModel.CustomerInfo" Role="CustomerInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypesOfCar">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CustomerInfo">
+              <PropertyRef Name="CarId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerInfo_CustomerInfo1">
+          <End Type="CarRentalModel.CustomerInfo" Role="CustomerInfo" Multiplicity="1" />
+          <End Type="CarRentalModel.CustomerInfo" Role="CustomerInfo1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CustomerInfo1">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -237,6 +325,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="CarRentalModel.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="shortname" ColumnName="shortname" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="TypesOfCars">
             <EntityTypeMapping TypeName="CarRentalModel.TypesOfCar">
               <MappingFragment StoreEntitySet="TypesOfCars">
@@ -246,15 +343,6 @@
                 <ScalarProperty Name="Modle" ColumnName="Modle" />
                 <ScalarProperty Name="Make" ColumnName="Make" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Roles">
-            <EntityTypeMapping TypeName="CarRentalModel.Role">
-              <MappingFragment StoreEntitySet="Roles">
-                <ScalarProperty Name="shortname" ColumnName="shortname" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -274,6 +362,16 @@
                 <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerInfoes">
+            <EntityTypeMapping TypeName="CarRentalModel.CustomerInfo">
+              <MappingFragment StoreEntitySet="CustomerInfo">
+                <ScalarProperty Name="CarId" ColumnName="CarId" />
+                <ScalarProperty Name="Bank" ColumnName="Bank" />
+                <ScalarProperty Name="Customer" ColumnName="Customer" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

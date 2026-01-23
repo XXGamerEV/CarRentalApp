@@ -84,10 +84,12 @@ namespace CarRentalApp
                 if (isValid)
                 {
                     var rentalRecord = new CarRentalRecord();
+                    var customer = new CustomerInfo();
                     if (isEditMode)
                     {
                         var id = int.Parse(lblRecordId.Text);
                         rentalRecord = _db.CarRentalRecords.FirstOrDefault(q => q.id == id);
+                        customer = _db.CustomerInfoes.FirstOrDefault(q => q.Id == id);
                     }
                     rentalRecord.CustomerName = customerName;
                     rentalRecord.DateRented = dateOut;
@@ -95,9 +97,14 @@ namespace CarRentalApp
                     rentalRecord.Cost = (decimal)cost;
                     rentalRecord.TypeOFCarId = (int)cbTypeOfCar.SelectedValue;
 
+
+                    customer.Customer = customerName;
+                    customer.CarId = (int)cbTypeOfCar.SelectedValue;
+
                     if (!isEditMode)
                     {
                         _db.CarRentalRecords.Add(rentalRecord);
+                        _db.CustomerInfoes.Add(customer);
                     }
 
                     _db.SaveChanges();

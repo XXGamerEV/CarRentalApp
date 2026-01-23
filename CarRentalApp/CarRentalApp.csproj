@@ -84,6 +84,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EditCustomerInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditCustomerInfo.Designer.cs">
+      <DependentUpon>EditCustomerInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddEditVehicle.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +125,15 @@
     </Compile>
     <Compile Include="AddEditRentalRecord.Designer.cs">
       <DependentUpon>AddEditRentalRecord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerInfo.cs">
+      <DependentUpon>CarRentalDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ManageCustomerInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageCustomerInfo.Designer.cs">
+      <DependentUpon>ManageCustomerInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="ResetPassword.cs">
       <SubType>Form</SubType>
@@ -180,11 +195,17 @@
     <EmbeddedResource Include="AddUser.resx">
       <DependentUpon>AddUser.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EditCustomerInfo.resx">
+      <DependentUpon>EditCustomerInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManageCustomerInfo.resx">
+      <DependentUpon>ManageCustomerInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ManageRentalRecords.resx">
       <DependentUpon>ManageRentalRecords.cs</DependentUpon>

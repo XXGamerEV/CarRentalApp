@@ -89,5 +89,15 @@ namespace CarRentalApp
                 manageUsersToolStripMenuItem.Visible = false;
             }
         }
+
+        private void manageCustomersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!Utils.FromIsOpen("ManageCustomerInfo"))
+            {
+                var manageCustomerInfoWindow = new ManageCustomerInfo();
+                manageCustomerInfoWindow.MdiParent = this;
+                manageCustomerInfoWindow.Show();
+            }
+        }
     }
 }

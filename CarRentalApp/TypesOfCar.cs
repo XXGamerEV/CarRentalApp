@@ -18,6 +18,7 @@ namespace CarRentalApp
         public TypesOfCar()
         {
             this.CarRentalRecords = new HashSet<CarRentalRecord>();
+            this.CustomerInfoes = new HashSet<CustomerInfo>();
         }
     
         public int Id { get; set; }
@@ -29,5 +30,7 @@ namespace CarRentalApp
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CarRentalRecord> CarRentalRecords { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CustomerInfo> CustomerInfoes { get; set; }
     }
 }

@@ -5,14 +5,17 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="5e5cdbdddffe427b825b9f06997435ac" Name="Diagram1">
-        <EntityTypeShape EntityType="CarRentalModel.CarRentalRecord" Width="1.5" PointX="7.875" PointY="1.75" />
-        <EntityTypeShape EntityType="CarRentalModel.TypesOfCar" Width="1.5" PointX="5.625" PointY="1.75" />
+        <EntityTypeShape EntityType="CarRentalModel.CarRentalRecord" Width="1.5" PointX="3" PointY="1.125" />
+        <EntityTypeShape EntityType="CarRentalModel.Role" Width="1.5" PointX="5.75" PointY="4" />
+        <EntityTypeShape EntityType="CarRentalModel.TypesOfCar" Width="1.5" PointX="0.75" PointY="2.625" />
+        <EntityTypeShape EntityType="CarRentalModel.UserRole" Width="1.5" PointX="8" PointY="0.875" />
+        <EntityTypeShape EntityType="CarRentalModel.User" Width="1.5" PointX="5.75" PointY="0.875" />
         <AssociationConnector Association="CarRentalModel.FK_CarRentalRecord_TypesOfCars" />
-        <EntityTypeShape EntityType="CarRentalModel.Role" Width="1.5" PointX="5.625" PointY="6.625" />
-        <EntityTypeShape EntityType="CarRentalModel.UserRole" Width="1.5" PointX="7.875" PointY="4.375" />
-        <EntityTypeShape EntityType="CarRentalModel.User" Width="1.5" PointX="5.625" PointY="4.375" />
         <AssociationConnector Association="CarRentalModel.FK_UserRoles_Roles" />
         <AssociationConnector Association="CarRentalModel.FK_UserRoles_Users" />
+        <EntityTypeShape EntityType="CarRentalModel.CustomerInfo" Width="1.5" PointX="3" PointY="4.75" />
+        <AssociationConnector Association="CarRentalModel.FK_CustomerInfo_CustomerInfo" />
+        <AssociationConnector Association="CarRentalModel.FK_CustomerInfo_CustomerInfo1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
