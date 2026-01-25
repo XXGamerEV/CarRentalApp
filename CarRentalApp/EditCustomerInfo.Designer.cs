@@ -36,6 +36,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.tbBank = new System.Windows.Forms.TextBox();
             this.Submit = new System.Windows.Forms.Button();
+            this.lblRecordId = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -111,11 +112,21 @@
             this.Submit.UseVisualStyleBackColor = true;
             this.Submit.Click += new System.EventHandler(this.Submit_Click);
             // 
+            // lblRecordId
+            // 
+            this.lblRecordId.AutoSize = true;
+            this.lblRecordId.Location = new System.Drawing.Point(213, 302);
+            this.lblRecordId.Name = "lblRecordId";
+            this.lblRecordId.Size = new System.Drawing.Size(0, 13);
+            this.lblRecordId.TabIndex = 18;
+            this.lblRecordId.Visible = false;
+            // 
             // EditCustomerInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(289, 350);
+            this.Controls.Add(this.lblRecordId);
             this.Controls.Add(this.Submit);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.tbBank);
@@ -126,6 +137,7 @@
             this.Controls.Add(this.lblTitle);
             this.Name = "EditCustomerInfo";
             this.Text = "Edit Customer Info";
+            this.Load += new System.EventHandler(this.EditCustomerInfo_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -141,5 +153,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox tbBank;
         private System.Windows.Forms.Button Submit;
+        private System.Windows.Forms.Label lblRecordId;
     }
 }
